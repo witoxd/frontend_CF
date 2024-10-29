@@ -1,0 +1,153 @@
+<p-card class="w-12 h-full">
+    <ng-template pTemplate="header">
+        <div class="flex justify-content-between flex-wrap">
+            <h3 class="ml-4">Registro de Amortizaciones</h3>
+            <td>
+                <div>
+                   <button 
+                       pButton 
+                       pRipple
+                       size="small"
+                       icon="pi pi-warning"
+                       class="mr-1"
+                       [raised]="true"
+                       (click)="mostrarAmortizaciones()">
+                   </button>
+                </div>
+                   
+                <div class="mt-2 mr-2">
+                    <a 
+                      pButton 
+                      pRipple
+                      label="Crear Amortización" 
+                      class="mr-1"
+                      icon="pi pi-plus"
+                      class="bg-cyan-600"
+                      [routerLink]="['/Amortizaciones/nuevo']">
+                    </a>
+                </div>
+            </td>
+        </div>
+    </ng-template>
+
+    <p>
+        <p-table [value]="Amortizaciones"
+            styleClass="p-datatable-gridlines" 
+            responsiveLayout="stack" 
+            [paginator]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            [tableStyle]="{ 'max-width': '58rem', 'min-width': '50rem' }"
+            [globalFilterFields]="['id', 'prestamosID', 'fecha', 'monto', 'estado']">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="id" style="width:10%">ID <p-sortIcon field="id" /></th>
+                    <th pSortableColumn="prestamosID" style="width:20%">Préstamo ID <p-sortIcon field="prestamosID" /></th>
+                    <th pSortableColumn="fecha" style="width:20%">Fecha <p-sortIcon field="fecha" /></th>
+                    <th pSortableColumn="monto" style="width:20%">Monto <p-sortIcon field="monto" /></th>
+                    <th pSortableColumn="estado" style="width:20%">Estado <p-sortIcon field="estado" /></th>
+                    <th class="flex justify-content-center flex-wrap">Acciones</th>
+                </tr>
+                <tr>
+                    <th><p-columnFilter type="numeric" field="id" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="numeric" field="prestamosID" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="date" field="fecha" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="numeric" field="monto" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="boolean" field="estado" [showClearButton]="true" /></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-amortizacion>
+                <tr>
+                    <!-- Columna editable para id -->
+                    <td [pEditableColumn]="amortizacion.id" pEditableColumnField="id">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="number" [(ngModel)]="amortizacion.id" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ amortizacion.id }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para prestamosID -->
+                    <td [pEditableColumn]="amortizacion.prestamosID" pEditableColumnField="prestamosID">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="number" [(ngModel)]="amortizacion.prestamosID" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ amortizacion.prestamosID }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para fecha -->
+                    <td [pEditableColumn]="amortizacion.fecha" pEditableColumnField="fecha">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="date" [(ngModel)]="amortizacion.fecha" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ amortizacion.fecha }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para monto -->
+                    <td [pEditableColumn]="amortizacion.monto" pEditableColumnField="monto">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="number" [(ngModel)]="amortizacion.monto" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ amortizacion.monto }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para estado -->
+                    <td [pEditableColumn]="amortizacion.estado" pEditableColumnField="estado">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="checkbox" [(ngModel)]="amortizacion.estado" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ amortizacion.estado ? 'Activo' : 'Inactivo' }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna de acciones -->
+                    <td>
+                        <button 
+                            pButton 
+                            pRipple
+                            size="small"
+                            icon="pi pi-sync"
+                            severity="warning"
+                            class="mr-1"
+                            [raised]="true"
+                            (click)="actualizarAmortizaciones(amortizacion)">
+                        </button>
+                        
+                        <button 
+                            pButton 
+                            pRipple
+                            size="small"
+                            severity="danger"
+                            icon="pi pi-trash"
+                            class="mr-1"
+                            [raised]="true"
+                            (click)="eliminar(amortizacion.id)">
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</p-card>
+
+

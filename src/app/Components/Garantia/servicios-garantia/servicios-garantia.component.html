@@ -1,0 +1,138 @@
+<p-card class="w-12 h-full">
+  <ng-template pTemplate="header">
+      <div class="flex justify-content-between flex-wrap">
+          <h3 class="ml-4">Registro de Garantías</h3>
+          <td>
+              <div>
+                  <button 
+                     pButton 
+                     pRipple
+                     size="small"
+                     icon="pi pi-warning"
+                     class="mr-1"
+                     [raised]="true"
+                     (click)="mostrarGarantias()">
+                  </button>
+              </div>
+              <div class="mt-2 mr-2">
+                  <a 
+                     pButton 
+                     pRipple
+                     label="Crear Garantía" 
+                     class="mr-1"
+                     icon="pi pi-plus-circle"
+                     class="bg-cyan-600"
+                     [routerLink]="['/garantias/nuevo']">
+                  </a>
+              </div>
+          </td>
+      </div>
+  </ng-template>
+
+  <p>
+      <p-table [value]="garantias"
+          styleClass="p-datatable-gridlines" 
+          responsiveLayout="stack" 
+          [paginator]="true"
+          [rows]="5"
+          [rowsPerPageOptions]="[5, 10, 20]"
+          [tableStyle]="{ 'max-width': '58rem', 'min-width': '50rem' }"
+          [globalFilterFields]="['prestamosID', 'tipogarantia', 'valorgarantia', 'descripcion']">
+
+          <ng-template pTemplate="header">
+              <tr>
+                  <th pSortableColumn="prestamosID" style="width:15%">ID Préstamo <p-sortIcon field="prestamosID" /></th>
+                  <th pSortableColumn="tipogarantia" style="width:15%">Tipo Garantía <p-sortIcon field="tipogarantia" /></th>
+                  <th pSortableColumn="valorgarantia" style="width:15%">Valor Garantía <p-sortIcon field="valorgarantia" /></th>
+                  <th pSortableColumn="descripcion" style="width:40%">Descripción <p-sortIcon field="descripcion" /></th>
+                  <th class="flex justify-content-center flex-wrap">Acciones</th>
+              </tr>
+              <tr>
+                  <th><p-columnFilter type="text" field="prestamosID" [showClearButton]="true" /></th>
+                  <th><p-columnFilter type="text" field="tipogarantia" [showClearButton]="true" /></th>
+                  <th><p-columnFilter type="text" field="valorgarantia" [showClearButton]="true" /></th>
+                  <th><p-columnFilter type="text" field="descripcion" [showClearButton]="true" /></th>
+              </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-garantia>
+              <tr>
+                  <!-- Columna editable para ID del préstamo -->
+                  <td [pEditableColumn]="garantia.prestamosID" pEditableColumnField="prestamosID">
+                      <p-cellEditor>
+                          <ng-template pTemplate="input">
+                              <input pInputText type="number" [(ngModel)]="garantia.prestamosID" />
+                          </ng-template>
+                          <ng-template pTemplate="output">
+                              {{ garantia.prestamosID }}
+                          </ng-template>
+                      </p-cellEditor>
+                  </td>
+
+                  <!-- Columna editable para tipo de garantía -->
+                  <td [pEditableColumn]="garantia.tipogarantia" pEditableColumnField="tipogarantia">
+                      <p-cellEditor>
+                          <ng-template pTemplate="input">
+                              <input pInputText type="text" [(ngModel)]="garantia.tipogarantia" />
+                          </ng-template>
+                          <ng-template pTemplate="output">
+                              {{ garantia.tipogarantia }}
+                          </ng-template>
+                      </p-cellEditor>
+                  </td>
+
+                  <!-- Columna editable para valor de garantía -->
+                  <td [pEditableColumn]="garantia.valorgarantia" pEditableColumnField="valorgarantia">
+                      <p-cellEditor>
+                          <ng-template pTemplate="input">
+                              <input pInputText type="number" [(ngModel)]="garantia.valorgarantia" />
+                          </ng-template>
+                          <ng-template pTemplate="output">
+                              {{ garantia.valorgarantia }}
+                          </ng-template>
+                      </p-cellEditor>
+                  </td>
+
+                  <!-- Columna editable para descripción de la garantía -->
+                  <td [pEditableColumn]="garantia.descripcion" pEditableColumnField="descripcion">
+                      <p-cellEditor>
+                          <ng-template pTemplate="input">
+                              <input pInputText type="text" [(ngModel)]="garantia.descripcion" />
+                          </ng-template>
+                          <ng-template pTemplate="output">
+                              {{ garantia.descripcion }}
+                          </ng-template>
+                      </p-cellEditor>
+                  </td>
+
+                  <!-- Columna de acciones -->
+                  <td>
+                      <!-- Botón de actualizar garantía directamente -->
+                      <button 
+                          pButton 
+                          pRipple
+                          size="small"
+                          icon="pi pi-sync"
+                          severity="warning"
+                          class="mr-1"
+                          [raised]="true"
+                          (click)="actualizarGarantia(garantia)">
+                      </button>
+                      
+                      <button 
+                          pButton 
+                          pRipple
+                          size="small"
+                          severity="danger"
+                          icon="pi pi-trash"
+                          class="mr-1"
+                          [raised]="true"
+                          (click)="eliminar(garantia.id)">
+                      </button>
+                  </td>
+              </tr>
+          </ng-template>
+      </p-table>
+  </p>
+</p-card>
+

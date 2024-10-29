@@ -1,0 +1,46 @@
+/* Estilos para el Header */
+.app-header {
+    background-color: #1a1a1a; /* Fondo oscuro */
+    padding: 16px; /* Espaciado interno */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Sombra sutil */
+    border-bottom: 1px solid #333; /* Borde inferior */
+}
+
+.app-header h1 {
+    color: #e0e0e0; /* Texto gris claro */
+    margin: 0;
+}
+
+.header-button {
+    margin-left: 10px;
+    color: #e0e0e0; /* Texto gris claro para botones */
+    background-color: #2a2a2a; /* Fondo oscuro para los botones */
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.header-button:hover {
+    background-color: #333; /* Fondo ligeramente más claro al hacer hover */
+}
+
+/* Estilos para el Footer */
+.app-footer {
+    background-color: #1a1a1a; /* Fondo oscuro */
+    padding: 16px;
+    text-align: center;
+    border-top: 1px solid #333; /* Borde superior */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.7); /* Sombra superior */
+}
+
+.app-footer-content {
+    color: #e0e0e0; /* Texto gris claro */
+}
+
+.content {
+    padding: 20px;
+    background-color: #2a2a2a; /* Fondo oscuro para la sección de contenido */
+    min-height: calc(100vh - 160px); /* Altura mínima para llenar la pantalla, descontando el header y footer */
+}

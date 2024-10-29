@@ -1,0 +1,77 @@
+<p-card class="w-12 h-full">
+    <ng-template pTemplate="header">
+        <div class="flex justify-content-between flex-wrap">
+            <h3 class="ml-4">Registro de Tipos de Prestamo</h3>
+            <td>
+                <div>
+                    <button pButton pRipple size="small" icon="pi pi-warning" class="mr-1" [raised]="true"
+                        (click)="mostrarTipoprestamo()"></button>
+                </div>
+
+                <div class="mt-2 mr-2">
+                    <a pButton pRipple label="Crear Tipo de Cuenta" class="mr-1" icon="pi pi-id-card-plus"
+                        [routerLink]="['/tipocuenta/nuevo']"></a>
+                </div>
+            </td>
+        </div>
+    </ng-template>
+
+    <p>
+        <p-table [value]="tipoprestamo" styleClass="p-datatable-gridlines" responsiveLayout="stack" [paginator]="true"
+            [rows]="5" [rowsPerPageOptions]="[5, 10, 20]" [tableStyle]="{ 'max-width': '58rem', 'min-width': '50rem' }"
+            [globalFilterFields]="['tipo', 'descripcion']">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="tipo" style="width:19%">Tipo <p-sortIcon field="tipo" /></th>
+                    <th pSortableColumn="descripcion" style="width:19%">Descripción <p-sortIcon field="descripcion" />
+                    </th>
+                    <th class="flex justify-content-center flex-wrap">Acciones</th>
+                </tr>
+                <tr>
+                    <th><p-columnFilter type="text" field="tipo" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="descripcion" [showClearButton]="true" /></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-tipoCuenta>
+                <tr>
+                    <!-- Columna editable para tipo de cuenta -->
+                    <td [pEditableColumn]="tipoCuenta.tipo" pEditableColumnField="tipo">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="tipoCuenta.tipo" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ tipoCuenta.tipo }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para descripción de cuenta -->
+                    <td [pEditableColumn]="tipoCuenta.descripcion" pEditableColumnField="descripcion">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="tipoCuenta.descripcion" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ tipoCuenta.descripcion }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna de acciones -->
+                    <td>
+                        <!-- Botón de actualizar tipo de cuenta -->
+                        <button pButton pRipple size="small" icon="pi pi-sync" severity="warning" class="mr-1"
+                            [raised]="true" (click)="actualizarTipoCuenta(tipoCuenta)"></button>
+
+                        <!-- Botón de eliminar tipo de cuenta -->
+                        <button pButton pRipple size="small" severity="danger" icon="pi pi-trash" class="mr-1"
+                            [raised]="true" (click)="eliminar(tipoCuenta.id)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</p-card>

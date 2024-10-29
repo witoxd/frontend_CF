@@ -1,0 +1,141 @@
+
+<p-card class="w-12 h-full">
+    <ng-template pTemplate="header">
+        <div class="flex justify-content-between flex-wrap">
+            <h3 class="ml-4">Registro de Empleados</h3>
+            <div class="mt-2 mr-2">
+                <a 
+                  pButton 
+                  pRipple
+                  label="Crear Empleados" 
+                  icon="pi pi-user-plus"
+                  class="bg-cyan-600"
+                  [routerLink]="['/Empleados/nuevo']">
+                </a>
+            </div>
+        </div>
+    </ng-template>
+
+    <p>
+        <p-table [value]="Empleados"
+            styleClass="p-datatable-gridlines" 
+            responsiveLayout="stack" 
+            [paginator]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            [tableStyle]="{ 'max-width': '58rem', 'min-width': '50rem' }"
+            [globalFilterFields]="['nombre', 'apellido', 'direccion', 'telefono', 'correo']">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="nombre" style="width:19%">Nombre <p-sortIcon field="nombre" /></th>
+                    <th pSortableColumn="apellido" style="width:19%">Apellido <p-sortIcon field="apellido" /></th>
+                    <th pSortableColumn="direccion" style="width:19%">Dirección <p-sortIcon field="direccion" /></th>
+                    <th pSortableColumn="telefono" style="width:19%">Teléfono <p-sortIcon field="telefono" /></th>
+                    <th pSortableColumn="correo" style="width:19%">Correo <p-sortIcon field="correo" /></th>
+                    <th class="flex justify-content-center flex-wrap">Acciones</th>
+                </tr>
+                <tr>
+                    <th><p-columnFilter type="text" field="nombre" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="apellido" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="direccion" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="telefono" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="correo" [showClearButton]="true" /></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-Empleados>
+                <tr>
+                    <!-- Columna editable para nombreCliente -->
+                    <td [pEditableColumn]="Empleados.nombre" pEditableColumnField="nombre">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="Empleados.nombre" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ Empleados.nombre }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para apellidoCliente -->
+
+                    <td [pEditableColumn]="Empleados.apellido" pEditableColumnField="apellido">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="Empleados.apellido" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ Empleados.apellido }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para direccionCliente -->
+                    <td [pEditableColumn]="Empleados.direccion" pEditableColumnField="direccion">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="Empleados.direccion" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ Empleados.direccion }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para telefonoCliente -->
+                    <td [pEditableColumn]="Empleados.telefono" pEditableColumnField="telefono">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="Empleados.telefono" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ Empleados.telefono }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para correoCliente -->
+                    <td [pEditableColumn]="Empleados.correo" pEditableColumnField="correo">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="Empleados.correo" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ Empleados.correo }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna de acciones -->
+                    <td>
+                        <!-- Botón de actualizar cliente directamente -->
+                         
+                        <button 
+                            pButton 
+                            pRipple
+                            size="small"
+                            icon="pi pi-sync"
+                            severity="warning"
+                            class="mr-1"
+                            [raised]="true"
+                            (click)="actualizarEmpleados(Empleados)">
+                        </button>
+                        
+                        <button 
+                            pButton 
+                            pRipple
+                            size="small"
+                            severity="danger"
+                            icon="pi pi-trash"
+                            class="mr-1"
+                            [raised]="true"
+                            (click)="eliminar(Empleados.id)">
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</p-card>
+

@@ -1,0 +1,136 @@
+
+<p-card class="w-12 h-full">
+
+    <p>
+        <p-table [value]="Cuentas"
+            styleClass="p-datatable-gridlines" 
+            responsiveLayout="stack" 
+            [paginator]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            [tableStyle]="{ 'max-width': '58rem', 'min-width': '50rem' }"
+            [globalFilterFields]="['clienteID', 'numero', 'tipocuenta', 'saldo']">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="clienteID" style="width:19%">clienteID <p-sortIcon field="clienteID" /></th>
+                    <th pSortableColumn="numero" style="width:19%">numero <p-sortIcon field="numero" /></th>
+                    <th pSortableColumn="tipocuenta" style="width:19%">tipocuenta <p-sortIcon field="tipocuenta" /></th>
+                    <th pSortableColumn="saldo" style="width:19%">saldo <p-sortIcon field="saldo" /></th>
+                    <th class="flex justify-content-center flex-wrap">Acciones</th>
+                </tr>
+                <tr>
+                    <th><p-columnFilter type="text" field="clienteID" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="numero" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="tipocuenta" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="saldo" [showClearButton]="true" /></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-Cuentas>
+                <tr>
+                    <!-- Columna editable para clienteIDCliente -->
+                    <td [pEditableColumn]="Cuentas.clienteID" pEditableColumnField="clienteID">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="Cuentas.clienteID" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ Cuentas.clienteID }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para numeroCliente -->
+
+                    <td [pEditableColumn]="Cuentas.numero" pEditableColumnField="numero">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="Cuentas.numero" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ Cuentas.numero }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para tipocuentaCliente -->
+                    <td [pEditableColumn]="Cuentas.nombreTipoCuenta" pEditableColumnField="nombreTipoCuenta">
+                        <p-cellEditor>
+                          <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="Cuentas.nombreTipoCuenta" />
+                          </ng-template>
+                          <ng-template pTemplate="output">
+                            {{ Cuentas.nombreTipoCuenta }}
+                          </ng-template>
+                        </p-cellEditor>
+                      </td>
+                      
+
+                    <!-- Columna editable para saldoCliente -->
+                    <td [pEditableColumn]="Cuentas.saldo" pEditableColumnField="saldo">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="Cuentas.saldo" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ Cuentas.saldo }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para correoCliente -->
+                    <td [pEditableColumn]="Cuentas.correo" pEditableColumnField="correo">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="Cuentas.correo" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ Cuentas.correo }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna de acciones -->
+                    <td>
+                        <!-- Botón de actualizar cliente directamente -->
+                         
+                        <button 
+                            pButton 
+                            pRipple
+                            size="small"
+                            icon="pi pi-sync"
+                            severity="warning"
+                            class="mr-1"
+                            [raised]="true"
+                            [routerLink]="['/Cuentas/Actualizar', Cuentas.id]">
+                        </button>
+                        
+                        <button 
+                            pButton 
+                            pRipple
+                            size="small"
+                            severity="danger"
+                            icon="pi pi-trash"
+                            class="mr-1"
+                            [raised]="true"
+                            (click)="eliminar(Cuentas.id)">
+                        </button>
+
+                        <button 
+                        pButton 
+                        pRipple
+                        size="small"
+                        severity="danger"
+                        icon="pi pi-trash"
+                        class="mr-1"
+                        [raised]="true"
+                        [routerLink] = "['/Prestamos/nuevo', Cuentas.clienteID]">
+                        Crear Prestamos
+                    </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</p-card>

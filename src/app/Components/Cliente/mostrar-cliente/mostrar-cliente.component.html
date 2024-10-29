@@ -1,0 +1,399 @@
+<!-- <p-card class="w-12 h-full">
+    <ng-template pTemplate="header">
+        <div class="flex justify-content-between flex-wrap">
+            <h3 class="ml-4">
+                Registro de Clientes
+            </h3>
+            <div class="mt-2 mr-2">
+                <a 
+                  pButton 
+                  pRipple
+                  label="Crear Clientes" 
+                  icon="pi pi-user-plus"
+                  class="bg-cyan-600"
+                  [routerLink]="['/clientes/nuevo']">
+                </a>
+            </div>
+        </div>
+    </ng-template>
+
+    <p>
+        <p-table [value]="clientes"
+            styleClass="p-datatable-gridlines" 
+            responsiveLayout="stack" 
+            [paginator]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            [tableStyle]="{ 'min-width': '40rem' }"
+            [globalFilterFields]="['nombreCliente', 'direccionCliente', 'telefonoCliente', 'correoCliente']">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="nombreCliente" style="width:19%">
+                        Nombre <p-sortIcon field="nombreCliente" />
+                    </th>
+                    <th pSortableColumn="direccionCliente" style="width:19%">
+                        Dirección <p-sortIcon field="direccionCliente" />
+                    </th>
+                    <th pSortableColumn="telefonoCliente" style="width:19%">
+                        Teléfono <p-sortIcon field="telefonoCliente" />
+                    </th>
+                    <th pSortableColumn="correoCliente" style="width:19%">
+                        Correo <p-sortIcon field="correoCliente" />
+                    </th>
+                    <th class="flex justify-content-center flex-wrap">Acciones</th>
+                </tr>
+                <tr>
+                    <th>
+                        <p-columnFilter type="text" field="nombreCliente" [showClearButton]="true" />
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="direccionCliente" [showClearButton]="true" />
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="telefonoCliente" [showClearButton]="true" />
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="correoCliente" [showClearButton]="true" />
+                    </th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-clientes>
+                <tr>
+                    <td>{{ clientes.nombreCliente }}</td>
+                    <td>{{ clientes.direccionCliente }}</td>
+                    <td>{{ clientes.telefonoCliente }}</td>
+                    <td>{{ clientes.correoCliente }}</td>
+                    <td>
+                        <a 
+                            pButton 
+                            pRipple
+                            icon="pi pi-sync"
+                            severity="warning"
+                            class="mr-1"
+                            [routerLink]="['/clientes/edit', clientes.id]">
+                        </a>
+                        <button 
+                            pButton 
+                            pRipple
+                            severity="danger"
+                            icon="pi pi-eraser"
+                            class="mr-1"
+                            (click)="eliminar(clientes.id)">
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</p-card> -->
+
+<!-- <p-card class="w-12 h-full">
+    <ng-template pTemplate="header">
+        <div class="flex justify-content-between flex-wrap">
+            <h3 class="ml-4">
+                Registro de Clientes
+            </h3>
+            <div class="mt-2 mr-2">
+                <a 
+                  pButton 
+                  pRipple
+                  label="Crear Clientes" 
+                  icon="pi pi-user-plus"
+                  class="bg-cyan-600"
+                  [routerLink]="['/clientes/nuevo']">
+                </a>
+            </div>
+        </div>
+    </ng-template>
+
+    <p>
+        <p-table [value]="clientes"
+            styleClass="p-datatable-gridlines" 
+            responsiveLayout="stack" 
+            [paginator]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            [tableStyle]="{ 'min-width': '40rem' }"
+            [globalFilterFields]="['nombreCliente', 'direccionCliente', 'telefonoCliente', 'correoCliente']">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="nombreCliente" style="width:19%">
+                        Nombre <p-sortIcon field="nombreCliente" />
+                    </th>
+                    <th pSortableColumn="direccionCliente" style="width:19%">
+                        Dirección <p-sortIcon field="direccionCliente" />
+                    </th>
+                    <th pSortableColumn="telefonoCliente" style="width:19%">
+                        Teléfono <p-sortIcon field="telefonoCliente" />
+                    </th>
+                    <th pSortableColumn="correoCliente" style="width:19%">
+                        Correo <p-sortIcon field="correoCliente" />
+                    </th>
+                    <th class="flex justify-content-center flex-wrap">Acciones</th>
+                </tr>
+                <tr>
+                    <th>
+                        <p-columnFilter type="text" field="nombreCliente" [showClearButton]="true" />
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="direccionCliente" [showClearButton]="true" />
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="telefonoCliente" [showClearButton]="true" />
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="correoCliente" [showClearButton]="true" />
+                    </th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-clientes>
+                <tr>
+                     
+                    <td [pEditableColumn]="clientes.nombreCliente" pEditableColumnField="nombreCliente">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="clientes.nombreCliente" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ clientes.nombreCliente }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    
+                    <td [pEditableColumn]="clientes.direccionCliente" pEditableColumnField="direccionCliente">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="clientes.direccionCliente" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ clientes.direccionCliente }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    
+                    <td [pEditableColumn]="clientes.telefonoCliente" pEditableColumnField="telefonoCliente">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="clientes.telefonoCliente" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ clientes.telefonoCliente }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                   
+                    <td [pEditableColumn]="clientes.correoCliente" pEditableColumnField="correoCliente">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="clientes.correoCliente" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ clientes.correoCliente }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                
+                    <td>
+                        <a 
+                            pButton 
+                            pRipple
+                            icon="pi pi-sync"
+                            severity="warning"
+                            class="mr-1"
+                            [raised]="true"
+                            [routerLink]="['/clientes/edit', clientes.id]">
+                        </a>
+                        <button 
+                            pButton 
+                            pRipple
+                            severity="danger"
+                            icon="pi pi-trash"
+                            class="mr-1"
+                            [raised]="true"
+                            (click)="eliminar(clientes.id)">
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</p-card>
+ -->
+
+ <p-card class="w-12 h-full">
+    <ng-template pTemplate="header">
+        <div class="flex justify-content-between flex-wrap">
+            <h3 class="ml-4">Registro de Clientes</h3>
+            <td>
+                
+                    <div>
+                       <button 
+                       pButton 
+                       pRipple
+                       size="small"
+                       icon="pi pi-warning"
+                       class="mr-1"
+                       [raised]="true"
+                       (click)="mostrarClientes()">
+                   </button>
+                   </div>
+                   
+            <div class="mt-2 mr-2">
+                <a 
+                  pButton 
+                  pRipple
+                  label="Crear Clientes" 
+                  class="mr-1"
+                  icon="pi pi-user-plus"
+                  class="bg-cyan-600"
+                  [routerLink]="['/clientes/nuevo']">
+                </a>
+            </div>
+        </td>
+        </div>
+    </ng-template>
+
+    <p>
+        <p-table [value]="clientes"
+            styleClass="p-datatable-gridlines" 
+            responsiveLayout="stack" 
+            [paginator]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            [tableStyle]="{ 'max-width': '58rem', 'min-width': '50rem' }"
+            [globalFilterFields]="['nombre', 'apellido', 'direccion', 'telefono', 'correo']">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="nombre" style="width:19%">Nombre <p-sortIcon field="nombre" /></th>
+                    <th pSortableColumn="apellido" style="width:19%">Apellido <p-sortIcon field="apellido" /></th>
+                    <th pSortableColumn="direccion" style="width:19%">Dirección <p-sortIcon field="direccion" /></th>
+                    <th pSortableColumn="telefono" style="width:19%">Teléfono <p-sortIcon field="telefono" /></th>
+                    <th pSortableColumn="correo" style="width:19%">Correo <p-sortIcon field="correo" /></th>
+                    <th class="flex justify-content-center flex-wrap">Acciones</th>
+                </tr>
+                <tr>
+                    <th><p-columnFilter type="text" field="nombre" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="apellido" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="direccion" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="telefono" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="correo" [showClearButton]="true" /></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-clientes>
+                <tr>
+                    <!-- Columna editable para nombreCliente -->
+                    <td [pEditableColumn]="clientes.nombre" pEditableColumnField="nombre">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="clientes.nombre" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ clientes.nombre }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para apellidoCliente -->
+
+                    <td [pEditableColumn]="clientes.apellido" pEditableColumnField="apellido">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="clientes.apellido" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ clientes.apellido }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para direccionCliente -->
+                    <td [pEditableColumn]="clientes.direccion" pEditableColumnField="direccion">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="clientes.direccion" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ clientes.direccion }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para telefonoCliente -->
+                    <td [pEditableColumn]="clientes.telefono" pEditableColumnField="telefono">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="clientes.telefono" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ clientes.telefono }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para correoCliente -->
+                    <td [pEditableColumn]="clientes.correo" pEditableColumnField="correo">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="clientes.correo" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ clientes.correo }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna de acciones -->
+                    <td>
+                        <!-- Botón de actualizar cliente directamente -->
+                         
+                        <button 
+                            pButton 
+                            pRipple
+                            size="small"
+                            icon="pi pi-sync"
+                            severity="warning"
+                            class="mr-1"
+                            [raised]="true"
+                            (click)="actualizarCliente(clientes)">
+                        </button>
+                        
+                        <button 
+                            pButton 
+                            pRipple
+                            size="small"
+                            severity="danger"
+                            icon="pi pi-trash"
+                            class="mr-1"
+                            [raised]="true"
+                            (click)="eliminar(clientes.id)">
+                        </button>
+
+                        <button 
+                        pButton 
+                        pRipple
+                        size="small"
+                        severity="danger"
+                        icon="pi pi-trash"
+                        class="mr-1"
+                        [raised]="true"
+                        [routerLink] = "['/Cuentas/nuevo', clientes.id]">
+                        Crear Cuenta
+                    </button>
+
+
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</p-card>

@@ -1,0 +1,239 @@
+<!-- <p-card header="Crear Cuenta" [style]="{ width: '100%' }">
+    <div>
+      <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+        <div class="grid">
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+              <input
+                class="w-12"
+                type="number"
+                pInputText
+                formControlName="clienteID"
+                placeholder="ID del Cliente"
+                title="clienteID"
+              />
+            </div>
+          </div>
+  
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-money-bill"></i></span>
+              <input
+                class="w-12"
+                type="number"
+                pInputText
+                formControlName="numero"
+                placeholder="Número de Cuenta"
+                title="numero"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="grid">
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-book"></i></span>
+              <input
+                class="w-12"
+                type="text"
+                pInputText
+                formControlName="tipocuenta"
+                placeholder="Tipo de Cuenta"
+                title="tipocuenta"
+              />
+            </div>
+          </div>
+  
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+              <input
+                class="w-12"
+                type="number"
+                pInputText
+                formControlName="saldo"
+                placeholder="Saldo Inicial"
+                title="saldo"
+                min="0"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="flex justify-content-center flex-wrap">
+          <button
+            pButton
+            pRipple
+            label="Guardar"
+            icon="pi pi-save"
+            severity="info"
+            class="mr-4"
+            type="submit"
+          ></button>
+  
+          <button
+            pButton
+            pRipple
+            label="Cancelar"
+            icon="pi pi-times-circle"
+            severity="warning"
+            class="mr-4"
+            type="button"
+            (click)="cancel()"
+          ></button>
+        </div>
+      </form>
+    </div>
+  </p-card>
+   -->
+<!-- 
+   <p-card header="Crear Cuenta" [style]="{ width: '100%' }">
+    <div>
+      <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+        <div class="grid">
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-money-bill"></i></span>
+              <input
+                class="w-12"
+                type="number"
+                pInputText
+                formControlName="numero"
+                placeholder="Número de Cuenta"
+                title="numero"
+              />
+            </div>
+          </div>
+  
+          <div class="col-12 sm:col-6">
+       
+              <p-dropdown
+                class="w-12"
+                [options]="tiposCuenta"
+                formControlName="tipocuenta"
+                placeholder="Selecciona un tipo de cuenta"
+                optionLabel="tipo"
+              ></p-dropdown>
+            
+          </div>
+        </div>
+  
+        <div class="grid">
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+              <input
+                class="w-12"
+                type="number"
+                pInputText
+                formControlName="saldo"
+                placeholder="Saldo Inicial"
+                title="saldo"
+                min="0"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="flex justify-content-center flex-wrap">
+          <button
+            pButton
+            pRipple
+            label="Guardar"
+            icon="pi pi-save"
+            severity="info"
+            class="mr-4"
+            type="submit"
+          ></button>
+  
+          <button
+            pButton
+            pRipple
+            label="Cancelar"
+            icon="pi pi-times-circle"
+            severity="warning"
+            class="mr-4"
+            type="button"
+            (click)="cancel()"
+          ></button>
+        </div>
+      </form>
+    </div>
+  </p-card> -->
+
+
+  <p-card header="Crear Cuenta" [style]="{ width: '100%' }">
+    <div>
+      <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+        <div class="grid">
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-money-bill"></i></span>
+              <input
+                class="w-12"
+                type="number"
+                pInputText
+                formControlName="numero"
+                placeholder="Número de Cuenta"
+                title="numero"
+              />
+            </div>
+          </div>
+  
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+                <p-dropdown 
+                    [options]="tiposCuentas" 
+                    formControlName="TipoCuentaID" 
+                    placeholder="Selecciona un Tipo de Cuenta"
+                    [showClear]="true">
+                </p-dropdown>
+            </div>
+        </div>
+        
+        </div>
+  
+        <div class="grid">
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+              <input
+                class="w-12"
+                type="number"
+                pInputText
+                formControlName="saldo"
+                placeholder="Saldo Inicial"
+                title="saldo"
+                min="0"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="flex justify-content-center flex-wrap">
+          <button
+            pButton
+            pRipple
+            label="Guardar"
+            icon="pi pi-save"
+            severity="info"
+            class="mr-4"
+            type="submit"
+          ></button>
+  
+          <button
+            pButton
+            pRipple
+            label="Cancelar"
+            icon="pi pi-times-circle"
+            severity="warning"
+            class="mr-4"
+            type="button"
+            (click)="cancel()"
+          ></button>
+        </div>
+      </form>
+    </div>
+  </p-card>

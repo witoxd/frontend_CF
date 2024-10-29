@@ -1,0 +1,67 @@
+/* Contenedor principal del PanelMenu */
+.p-panelmenu {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Encabezado del acordeón */
+.p-panelmenu-header {
+    background-color: #f8f9fa;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #343a40;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.p-panelmenu-header:hover {
+    background-color: #e9ecef;
+}
+
+/* Flecha de acordeón */
+.p-panelmenu-icon {
+    color: #007bff;
+    transition: transform 0.3s ease;
+}
+
+.p-panelmenu-header-active .p-panelmenu-icon {
+    transform: rotate(90deg); /* Rotación cuando está abierto */
+}
+
+/* Contenido del acordeón */
+.p-panelmenu-content {
+    padding: 0;
+    background-color: #fff;
+}
+
+/* Lista de ítems */
+.p-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ítems individuales */
+.p-menuitem {
+    padding: 10px 16px;
+    transition: background-color 0.3s ease;
+}
+
+.p-menuitem:hover {
+    background-color: #f1f1f1;
+}
+
+/* Texto de los ítems */
+.p-menuitem-text {
+    font-size: 14px;
+    color: #495057;
+}
+
+/* Iconos de los ítems */
+.p-menuitem-icon {
+    margin-right: 8px;
+    color: #6c757d;
+}

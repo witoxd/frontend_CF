@@ -1,0 +1,217 @@
+<!-- <p-card header="Crear Préstamo" [style]="{ width: '100%' }">
+    <div>
+      <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+        <div class="grid">
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+              <input
+                type="number"
+                pInputText
+                formControlName="clienteID"
+                placeholder="ID del Cliente"
+                title="ID del Cliente"
+              />
+            </div>
+          </div>
+  
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+              <input
+                type="number"
+                pInputText
+                formControlName="empleadoID"
+                placeholder="ID del Empleado"
+                title="ID del Empleado"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="grid">
+          <div class="col-12">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+              <input
+                type="date"
+                pInputText
+                formControlName="fechaprestamo"
+                title="Fecha del Préstamo"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="grid">
+          <div class="col-12">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-tag"></i></span>
+              <input
+                type="text"
+                pInputText
+                formControlName="tipoprestamo"
+                placeholder="Tipo de Préstamo"
+                title="Tipo de Préstamo"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="grid">
+          <div class="col-12">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+              <input
+                type="number"
+                pInputText
+                formControlName="montoprestamo"
+                placeholder="Monto del Préstamo"
+                title="Monto del Préstamo"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="grid">
+          <div class="col-12">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-percent"></i></span>
+              <input
+                type="number"
+                pInputText
+                formControlName="interes"
+                placeholder="Interés (%)"
+                title="Interés"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="grid">
+          <div class="col-12">
+            <label>
+              <input type="checkbox" formControlName="estado" /> Activo
+            </label>
+          </div>
+        </div>
+  
+        <div class="flex justify-content-center flex-wrap">
+          <button
+            pButton
+            label="Guardar"
+            icon="pi pi-save"
+            severity="info"
+            class="mr-4"
+            type="submit"
+          ></button>
+  
+          <button
+            pButton
+            label="Cancelar"
+            icon="pi pi-times-circle"
+            severity="warning"
+            class="mr-4"
+            type="button"
+            (click)="cancel()"
+          ></button>
+        </div>
+      </form>
+    </div>
+  </p-card>
+   -->
+
+   <p-card header="Crear Préstamo" [style]="{ width: '100%' }">
+    <div>
+      <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+      
+  
+        <div class="grid">
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+              <p-dropdown 
+                [options]="tiposPrestamos" 
+                formControlName="TipoPrestamoID" 
+                placeholder="Selecciona un Tipo de Préstamo"
+                [showClear]="true">
+              </p-dropdown>
+            </div>
+          </div>
+        </div>
+  
+        <div class="grid">
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+              <input
+                type="date"
+                pInputText
+                formControlName="fechaprestamo"
+                title="Fecha del Préstamo"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="grid">
+          <div class="col-12">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+              <input
+                type="number"
+                pInputText
+                formControlName="montoprestamo"
+                placeholder="Monto del Préstamo"
+                title="Monto del Préstamo"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="grid">
+          <div class="col-12">
+            <div class="p-inputgroup mb-1">
+              <span class="p-inputgroup-addon"><i class="pi pi-percent"></i></span>
+              <input
+                type="number"
+                pInputText
+                formControlName="interes"
+                placeholder="Interés (%)"
+                title="Interés"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="grid">
+          <div class="col-12">
+            <label>
+              <input type="checkbox" formControlName="estado" /> Activo
+            </label>
+          </div>
+        </div>
+  
+        <div class="flex justify-content-center flex-wrap">
+          <button
+            pButton
+            label="Guardar"
+            icon="pi pi-save"
+            severity="info"
+            class="mr-4"
+            type="submit"
+          ></button>
+  
+          <button
+            pButton
+            label="Cancelar"
+            icon="pi pi-times-circle"
+            severity="warning"
+            class="mr-4"
+            type="button"
+            (click)="cancel()"
+          ></button>
+        </div>
+      </form>
+    </div>
+  </p-card>
+  

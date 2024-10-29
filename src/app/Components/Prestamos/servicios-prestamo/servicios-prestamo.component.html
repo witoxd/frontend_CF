@@ -1,0 +1,168 @@
+<p-card class="w-12 h-full">
+    <ng-template pTemplate="header">
+        <div class="flex justify-content-between flex-wrap">
+            <h3 class="ml-4">Registro de Préstamos</h3>
+            <td>
+                <div>
+                   <button 
+                       pButton 
+                       pRipple
+                       size="small"
+                       icon="pi pi-warning"
+                       class="mr-1"
+                       [raised]="true"
+                       (click)="mostrarPrestamos()">
+                   </button>
+                </div>
+                   
+            </td>
+        </div>
+    </ng-template>
+
+    <p>
+        <p-table [value]="Prestamos"
+            styleClass="p-datatable-gridlines" 
+            responsiveLayout="stack" 
+            [paginator]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            [tableStyle]="{ 'max-width': '58rem', 'min-width': '50rem' }"
+            [globalFilterFields]="['id', 'clienteID', 'fechaprestamo', 'tipoprestamo', 'montoprestamo', 'interes', 'estado']">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="id" style="width:10%">ID <p-sortIcon field="id" /></th>
+                    <th pSortableColumn="clienteID" style="width:15%">Cliente ID <p-sortIcon field="clienteID" /></th>
+                    <th pSortableColumn="fechaprestamo" style="width:20%">Fecha Préstamo <p-sortIcon field="fechaprestamo" /></th>
+                    <th pSortableColumn="tipoprestamo" style="width:15%">Tipo Préstamo <p-sortIcon field="tipoprestamo" /></th>
+                    <th pSortableColumn="montoprestamo" style="width:15%">Monto Préstamo <p-sortIcon field="montoprestamo" /></th>
+                    <th pSortableColumn="interes" style="width:15%">Interés <p-sortIcon field="interes" /></th>
+                    <th class="flex justify-content-center flex-wrap">Estado</th>
+                    <th class="flex justify-content-center flex-wrap">Acciones</th>
+                </tr>
+                <tr>
+                    <th><p-columnFilter type="text" field="id" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="clienteID" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="date" field="fechaprestamo" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="tipoprestamo" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="montoprestamo" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="text" field="interes" [showClearButton]="true" /></th>
+                    <th><p-columnFilter type="boolean" field="estado" [showClearButton]="true" /></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-prestamo>
+                <tr>
+                    <!-- Columna editable para id -->
+                    <td [pEditableColumn]="prestamo.id" pEditableColumnField="id">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="number" [(ngModel)]="prestamo.id" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ prestamo.id }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para clienteID -->
+                    <td [pEditableColumn]="prestamo.clienteID" pEditableColumnField="clienteID">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="number" [(ngModel)]="prestamo.clienteID" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ prestamo.clienteID }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para fecha de préstamo -->
+                    <td [pEditableColumn]="prestamo.fechaprestamo" pEditableColumnField="fechaprestamo">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="date" [(ngModel)]="prestamo.fechaprestamo" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ prestamo.fechaprestamo }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para tipo de préstamo -->
+                    <td [pEditableColumn]="prestamo.tipoprestamo" pEditableColumnField="tipoprestamo">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="prestamo.tipoprestamo" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ prestamo.nombreTipoPrestamo }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para monto de préstamo -->
+                    <td [pEditableColumn]="prestamo.montoprestamo" pEditableColumnField="montoprestamo">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="number" [(ngModel)]="prestamo.montoprestamo" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ prestamo.montoprestamo }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para interés -->
+                    <td [pEditableColumn]="prestamo.interes" pEditableColumnField="interes">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="number" [(ngModel)]="prestamo.interes" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ prestamo.interes }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna editable para estado -->
+                    <td [pEditableColumn]="prestamo.estado" pEditableColumnField="estado">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="checkbox" [(ngModel)]="prestamo.estado" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ prestamo.estado ? 'Activo' : 'Inactivo' }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+
+                    <!-- Columna de acciones -->
+                    <td>
+                        <button 
+                            pButton 
+                            pRipple
+                            size="small"
+                            icon="pi pi-sync"
+                            severity="warning"
+                            class="mr-1"
+                            [raised]="true"
+                            (click)="actualizarPrestamos(prestamo)">
+                        </button>
+                        
+                        <button 
+                            pButton 
+                            pRipple
+                            size="small"
+                            severity="danger"
+                            icon="pi pi-trash"
+                            class="mr-1"
+                            [raised]="true"
+                            (click)="eliminar(prestamo.id)">
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</p-card>
